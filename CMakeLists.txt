@@ -7,15 +7,17 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(bsdiff)
 
+# C++ Library
 add_library(bsdiff-cpp INTERFACE)
 target_sources(bsdiff-cpp INTERFACE bsdiff-cpp/include/bsdiff.hpp)
 target_include_directories(bsdiff-cpp INTERFACE bsdiff-cpp/include)
-target_link_libraries(bsdiff-cpp INTERFACE bsdiff-library)
+target_link_libraries(bsdiff-cpp INTERFACE bsdiff-c)
 
+# Objective-C Library
 if (APPLE)
     add_library(bsdiff-objc)
     target_sources(bsdiff-objc PRIVATE bsdiff-objc/BSDiff.m INTERFACE bsdiff-objc/include/BSDiff.h)
     target_include_directories(bsdiff-objc PUBLIC bsdiff-objc/include)
-    target_link_libraries(bsdiff-objc PRIVATE "-framework Foundation" bsdiff-library)
+    target_link_libraries(bsdiff-objc PRIVATE "-framework Foundation" bsdiff-c)
     set_target_properties(bsdiff-objc PROPERTIES OUTPUT_NAME bsdiff)
 endif ()

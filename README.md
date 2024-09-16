@@ -6,7 +6,7 @@
 
 - bsdiff: bsdiff executable
 - bspatch: bspatch executable
-- bsdiff-library: bsdiff library
+- bsdiff-c: bsdiff C library
 - bsdiff-cpp: bsdiff C++ wrapper library
 - bsdiff-objc: bsdiff Objective-C wrapper library
 

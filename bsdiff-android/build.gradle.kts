@@ -32,7 +32,7 @@ android {
         }
     }
     prefab {
-        create("bsdiff-library") {
+        create("bsdiff-c") {
             headers = "../bsdiff/include"
         }
     }

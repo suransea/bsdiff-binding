@@ -16,7 +16,6 @@ FetchContent_MakeAvailable(bzip2)
 set(BZIP2_INCLUDE_DIR ${CMAKE_BINARY_DIR}/_deps/bzip2-src)
 
 # Executable
-
 add_executable(bsdiff)
 add_executable(bspatch)
 
@@ -29,10 +28,9 @@ target_include_directories(bspatch PRIVATE include ${BZIP2_INCLUDE_DIR})
 target_link_libraries(bsdiff PRIVATE bz2_static)
 target_link_libraries(bspatch PRIVATE bz2_static)
 
-# Library
-
-add_library(bsdiff-library)
-target_sources(bsdiff-library PRIVATE bsdiff.c bspatch.c INTERFACE include/bsdiff.h)
-target_include_directories(bsdiff-library PRIVATE ${BZIP2_INCLUDE_DIR} PUBLIC include)
-target_link_libraries(bsdiff-library PRIVATE bz2_static)
-set_target_properties(bsdiff-library PROPERTIES OUTPUT_NAME bsdiff)
+# C Library
+add_library(bsdiff-c)
+target_sources(bsdiff-c PRIVATE bsdiff.c bspatch.c INTERFACE include/bsdiff.h)
+target_include_directories(bsdiff-c PRIVATE ${BZIP2_INCLUDE_DIR} PUBLIC include)
+target_link_libraries(bsdiff-c PRIVATE bz2_static)
+set_target_properties(bsdiff-c PROPERTIES OUTPUT_NAME bsdiff)
